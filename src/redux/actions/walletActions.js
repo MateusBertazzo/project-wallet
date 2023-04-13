@@ -42,5 +42,4 @@ export const fetchAndAddExpense = (expenseObj) => async (dispatch) => {
     exchangeRates: data,
   };
   dispatch(addExpanses(expense));
-  console.log(expense);
 };
