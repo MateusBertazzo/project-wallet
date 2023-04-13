@@ -1,6 +1,7 @@
 export const REQUEST_SUCCESS_API = 'REQUEST_SUCCESS_API';
 export const REQUEST = 'REQUEST';
 export const ADD_EXPANSES = 'ADD_EXPANSE';
+export const REMOVE_EXPENSE_ID = 'REMOVE_EXPENSE_ID';
 
 const API_URL = 'https://economia.awesomeapi.com.br/json/all';
 
@@ -25,6 +26,11 @@ export const fetchApiCurrencies = () => async (dispatch) => {
 const addExpanses = (obj) => ({
   type: ADD_EXPANSES,
   payload: obj,
+});
+
+export const removeExpanseId = (id) => ({
+  type: REMOVE_EXPENSE_ID,
+  payload: id,
 });
 
 export const fetchAndAddExpense = (expenseObj) => async (dispatch) => {

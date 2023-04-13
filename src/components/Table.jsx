@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { removeExpanseId } from '../redux/actions/walletActions';
 
 class Table extends Component {
+  handleClick = (id) => {
+    const { dispatch } = this.props;
+
+    dispatch(removeExpanseId(id));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -35,6 +42,16 @@ class Table extends Component {
                   * Number(e.value)).toFixed(2) }
               </td>
               <td>Real</td>
+              <td>
+                <button
+                  data-testid="delete-btn"
+                  type="button"
+                  onClick={ () => this.handleClick(e.id) }
+                >
+                  Excluir
+
+                </button>
+              </td>
             </tr>
           </tbody>
         )) }
@@ -49,6 +66,7 @@ const mapStateToProps = (state) => ({
 });
 
 Table.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
